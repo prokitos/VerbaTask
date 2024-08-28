@@ -19,7 +19,10 @@ func (currentlDB *PostgresDatabase) Run(config config.MainConfig) {
 
 // миграция таблицы
 func (currentlDB *PostgresDatabase) StartMigration() {
-	currentlDB.Instance.AutoMigrate(models.Task{})
+	err := currentlDB.Instance.AutoMigrate(models.Task{})
+	if err != nil {
+		panic("error migration")
+	}
 	log.Debug("migration complete")
 }
 
@@ -87,7 +90,7 @@ func (currentlDB *PostgresDatabase) GlobalSet() {
 // парсинг интерфейса Table в таблицу Task
 func (currentlDB *PostgresDatabase) getData(temp models.Table) (models.Task, models.Response) {
 	person, ok := temp.(*models.Task)
-	if ok == false {
+	if !ok {
 		return models.Task{}, models.ResponseTask{}.InternalError()
 	}
 	return *person, nil

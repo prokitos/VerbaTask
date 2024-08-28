@@ -7,8 +7,8 @@ import (
 
 // структура для стандартных ответов на ошибки (например при запуске базы данных)
 type ResponseGlobal struct {
-	Description string `json:"description"       		 example:"description"`
-	Code        int    `json:"code"               		 example:"status"`
+	Description string `json:"description"        example:"description"`
+	Code        int    `json:"code"               example:"status"`
 }
 
 func (instance ResponseGlobal) BadRequest() error {

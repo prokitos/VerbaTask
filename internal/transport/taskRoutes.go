@@ -29,12 +29,12 @@ func getAllTasks(c *fiber.Ctx) error {
 func getTask(c *fiber.Ctx) error {
 	var curUser models.Task
 
-	tempId := c.Params("id")
-	idNew, err := strconv.Atoi(tempId)
+	tempID := c.Params("id")
+	idNew, err := strconv.Atoi(tempID)
 	if err != nil {
 		return models.ResponseTask{}.NotFound().GetResponse(c)
 	}
-	curUser.Id = idNew
+	curUser.ID = idNew
 
 	return services.TaskShow(curUser).GetResponse(c)
 }
@@ -47,12 +47,12 @@ func updateTask(c *fiber.Ctx) error {
 		return models.ResponseTask{}.BadRequest().GetResponse(c)
 	}
 
-	tempId := c.Params("id")
-	idNew, err := strconv.Atoi(tempId)
+	tempID := c.Params("id")
+	idNew, err := strconv.Atoi(tempID)
 	if err != nil {
 		return models.ResponseTask{}.NotFound().GetResponse(c)
 	}
-	curUser.Id = idNew
+	curUser.ID = idNew
 
 	return services.TaskUpdate(curUser).GetResponse(c)
 }
@@ -61,12 +61,12 @@ func updateTask(c *fiber.Ctx) error {
 func deleteTask(c *fiber.Ctx) error {
 	var curUser models.Task
 
-	tempId := c.Params("id")
-	idNew, err := strconv.Atoi(tempId)
+	tempID := c.Params("id")
+	idNew, err := strconv.Atoi(tempID)
 	if err != nil {
 		return models.ResponseTask{}.NotFound().GetResponse(c)
 	}
-	curUser.Id = idNew
+	curUser.ID = idNew
 
 	return services.TaskDelete(curUser).GetResponse(c)
 }

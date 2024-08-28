@@ -65,7 +65,6 @@ func (instance ResponseTask) Validate() bool {
 }
 
 func (instance ResponseTask) convertResponse() Response {
-	var temp Response
-	temp = instance
+	var temp Response = instance
 	return temp
 }

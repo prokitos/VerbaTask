@@ -24,3 +24,9 @@ Put:	 http://localhost:8001/tasks/10
     "description": "i already do something",
     "due_date":"2021-03-07"
 }
+
+
+
+
+вместо golint использовал revive.
+так как он устарел и убран из большинства инструментов для анализа кода, а сам репозиторий golint остался только как зеркало.

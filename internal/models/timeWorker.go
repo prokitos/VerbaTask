@@ -1,6 +1,8 @@
 package models
 
-import "time"
+import (
+	"time"
+)
 
 // структура для работы со временем. перевод строки в rfc строку, или текущего времени в rfc.
 type TimeWorker struct {

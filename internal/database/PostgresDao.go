@@ -1,7 +1,6 @@
 package database
 
 import (
-	"fmt"
 	"modules/internal/models"
 
 	log "github.com/sirupsen/logrus"
@@ -58,9 +57,7 @@ func (currentlDB *PostgresDatabase) UpdateData(data models.Table) models.Respons
 		return resp
 	}
 
-	fmt.Println(task)
-
-	result := currentlDB.Instance.Where("id = ?", task.Id).Clauses(clause.Returning{}).Updates(&task)
+	result := currentlDB.Instance.Where("id = ?", task.ID).Clauses(clause.Returning{}).Updates(&task)
 	if result.Error != nil {
 		log.Debug("update record error!")
 		return models.ResponseTask{}.InternalError()
@@ -79,7 +76,7 @@ func (currentlDB *PostgresDatabase) DeleteData(data models.Table) models.Respons
 		return resp
 	}
 
-	result := currentlDB.Instance.Delete(&task, task.Id)
+	result := currentlDB.Instance.Delete(&task, task.ID)
 	if result.RowsAffected == 0 || result.Error != nil {
 		return models.ResponseTask{}.NotFound()
 	}

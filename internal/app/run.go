@@ -24,7 +24,10 @@ func (a *App) NewServer(port string) {
 // выключение сервера при сбоях
 func (a *App) Stop() {
 	fmt.Println("Gracefully shutting down...")
-	a.Server.ShutdownWithTimeout(20 * time.Second)
+	err := a.Server.ShutdownWithTimeout(20 * time.Second)
+	if err != nil {
+		panic("error at close server")
+	}
 }
 
 func (a *App) setHandler() {
